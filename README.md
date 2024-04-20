@@ -29,10 +29,15 @@ b. Outputs
 This project involves the development of a Convolutional Neural Network (CNN) to discern human emotions from facial images. The dataset comprises a substantial 35,887 grayscale images categorized into seven emotional states: happiness, sadness, anger, neutrality, surprise, disgust, and fear. The core innovation of this project lies in real-time emotion detection using OpenCV, coupled with a novel shape design element that provides intuitive visual feedback during the interaction.
 
 
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/f23e4f21-9a96-42f8-8041-7ec794ece2ab)
+
 2. Data Set Description
 The dataset utilized in this project consists of 35,887 facial images, with a breakdown of 28,821 images for training and 7,066 for validation. Each image is a 48x48 pixel grayscale representation of various emotional states, including happiness, sadness, anger, neutrality, surprise, disgust, and fear. The dataset is publicly available on Kaggle, accessible through the following:
 
 Dataset- https://www.kaggle.com/datasets/jonathanoheix/face-expression-recognition-dataset
+
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/fa402f4c-bdc7-430b-b1e1-619d1e6a8b2a)
+
 
 The bar chart displays the frequency of various labeled expressions within a given dataset. The x-axis categorizes the data into seven distinct emotional expressions: fear, surprise, sad, happy, neutral, disgust, and angry. The y-axis quantifies the count of occurrences for each expression.  This chart provides a concise overview of the dataset's composition, which can be critical for analysis and model training. 
 
@@ -40,12 +45,20 @@ The bar chart displays the frequency of various labeled expressions within a giv
 a. UMap
 Uniform Manifold Approximation and Projection (UMap) is employed to reduce the dimensionality of the dataset while preserving its inherent structure. UMap allows for a more efficient representation of facial expressions, aiding in subsequent model training and analysis. The 2D and 3D UMAP visualizations display a multi-dimensional dataset reduced to fewer dimensions. UMAP effectively simplifies complex data, preserving structure. The 2D plot shows a plane with axes umap1 and umap2, where point density suggests tight clustering and some separation by expressions like 'neutral', 'happy', and 'sad'. The 3D plot adds depth, enhancing data structure analysis and maintaining clustering quality. Such clear groupings benefit classification tasks, indicating that similar items cluster closely. The color-coding highlights distribution patterns, showing that UMAP successfully identifies structure, aiding pattern recognition and informing further data analysis and model development strategies.
 
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/c6170f58-6061-4ae0-b686-e909de105168)
+
+
+
 b. t-SNE
 t-Distributed Stochastic Neighbor Embedding (t-SNE) is utilized for its ability to visualize high-dimensional data in a two-dimensional or three-dimensional space. This technique helps to reveal patterns and relationships within the facial expression dataset. The images show 2D and 3D t-SNE visualizations of image data, a method that simplifies high-dimensional data while maintaining point distances. The 2D plot reveals a dense point distribution across two axes, with colors indicating classes like 'angry', 'happy', and 'surprise', suggesting various expressions. The 3D plot adds another dimension but still shows intermixed data without clear separation. t-SNE helps understand the data structure, yet the overlap of expressions implies a need for further refinement. These visualizations are foundational for deeper analysis and can direct further steps in data processing and model optimization.
 
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/7e63fbd2-0421-4e96-85b7-8105036a823b)
 
 c. PCA
 Principal Component Analysis (PCA) is applied to further reduce dimensionality and highlight the most significant features contributing to the variability in facial expressions. PCA assists in preprocessing the data before model training. The 2D and 3D PCA visualizations represent a dataset with various expressions labeled in color. PCA, a technique to reduce data dimensions, shows points spread across principal components (PCs). In both visualizations, the points are intermixed, indicating a complex underlying structure with no distinct expression clusters. This suggests that while PCA has reduced data complexity, discerning clear patterns for expressions like 'angry' or 'happy' may require additional analysis or different techniques. These visualizations are critical for identifying nuances in data, guiding further model development, and feature extraction to enhance classification tasks.
+
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/2dfcbfc2-ba40-49bb-beb1-5d0eb39a9a77)
+
 
 4. Model Architecture
    
@@ -77,6 +90,10 @@ The training is set to run for 48 epochs.
 The performance of the model is monitored on a validation dataset.
 A ModelCheckpoint callback is used to save the model with the best validation accuracy during training.
 Output:
+
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/9e126b7f-845f-43b6-871e-1636f0b48bc2)
+
+
 The charts show training progress using Adam optimization. Training loss steadily decreases, which is good. However, validation loss is erratic, suggesting model instability. Similarly, training accuracy improves consistently, but validation accuracy is volatile, indicating the model may not generalize well to unseen data. Further model tuning is advised.
 
 b. Experiment 2 - CNN with Early Stopping
@@ -95,6 +112,10 @@ Resource Optimization: It saves computational resources by terminating training 
 Model Performance: By reverting to the best weights when early stopping occurs, the model will likely have better generalization performance on unseen data.
 
 Output:
+
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/c93dd14c-2bea-4d49-a3b6-07f036720ab8)
+
+
 The graphs show training and validation loss and accuracy for a model using the Adam optimizer. Training loss decreases while validation loss plateaus, suggesting early signs of overfitting. Accuracy improves for both, but validation accuracy lags behind training accuracy, highlighting the need for model calibration to enhance generalization.
 
 c. Experiment 3 - Inception-like Model with Early Stopping and ReduceLROnPlateau
@@ -121,14 +142,24 @@ Model's Performance: By using a complex architecture with multiple convolutional
 Efficiency and Optimization: Through callbacks like EarlyStopping and ReduceLROnPlateau, the experiment also focuses on optimizing the training process for efficiency and effectiveness, potentially leading to a model that generalizes well on unseen data.
 
 Output:
+
+
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/24805f1c-c601-4fd1-a178-a2bde687164b)
+
+
 The graphs depict training and validation loss, and accuracy over epochs, using the Adam optimizer. Loss decreases and accuracy increases as expected, but validation metrics are worse than training, indicating potential overfitting. The accuracy plot suggests the model is learning, but the fluctuating validation accuracy calls for further optimization.
 
 5. Additional Features - Real-Time Emotion Detection
 a. Methodology
 In addition to the model training and evaluation, real-time emotion detection is implemented using OpenCV. OpenCV's image processing capabilities enable efficient real-time analysis of facial expressions. The shape design element is introduced to provide users with immediate and intuitive visual feedback during the interaction.
 
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/f47bb002-5b8d-4555-bb59-ed7e76291076)
+
 b. Outputs
 Visual feedback is an integral part of the real-time emotion detection process. The shape design element, representing different emotions through distinct shapes, enhances the user's understanding of the detected emotions. The design choices are carefully considered to align with the emotional states, providing a more engaging and informative user experience.
+
+![image](https://github.com/Khizar-Baig/CS584-Final-Project/assets/59732957/b49c8cba-5934-49b7-aa4d-7212d0a17c35)
+
 
 6. Conclusion
 
